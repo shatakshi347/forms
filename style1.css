@@ -58,45 +58,27 @@ li{
 
 #oneWay{
   background-color:rgba(16,13,53,.3);
-  border-width:5px;
+  border-width:5px 0px 0px 0px;
   border-color:#24A327;
   padding:4px 12px;
   width:100px;
   outline:none;
-  position: relative;align:middle;margin-left: 40%;
+  position: relative;
+  align:middle;
+  margin-left: 40%;
   
 }
 
 #twoWay{
  color:lightgrey;
-   background-color:rgba(16,13,53,.3);
-  border-width:2px 0px 0px 0px;
+  background-color:rgba(16,13,53,.3);
+  border-width:5px 0px 0px 0px;
   padding:4px 12px;
   width:100px;
   outline:none;
   position: relative;align:middle;margin-left: 1%;
 
 }
-
-#twoWay:hover{
-  color:#ffc206;
-  outline: #24A327 solid 3px;
-  background-color:rgba(16,13,53,.3);
-
-}
-
-/*#twoWay:active{
-  color:white;
-}*/
-
-#oneWay:hover{
-  color:#24A327
-  outline: #24A327 solid 1px;
-
-}
-/*#oneWay:active{
-  color:#7d7d7d;
-}*/
 select{
     padding:10px;
     width:13vw;
