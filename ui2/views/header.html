@@ -1,0 +1,101 @@
+<html>
+	<head>
+		<link href="views/header.css" rel="stylesheet" type="text/css">
+		<!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
+		<!--<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
+
+	</head>
+	<body>
+		  <style>
+        .round {
+                border-radius: 50%;
+                overflow: hidden;
+                width: 150px;
+                height: 150px;
+            }
+        .round img {
+                display: block;
+                min-width: 100%;
+                min-height: 100%;
+                  }
+         .img-circle {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}         
+  </style>
+
+</head>
+
+<body>
+<div id="fb-root"></div>
+      <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.6&appId=1640657659526412";
+            fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+      </script>
+
+<!--//Map the correct css style to create the fixed position 
+div#header-fixed {position:fixed; top:0px; margin:auto; z-index:100000; width:100%;} 
+div#my-menus {background:#000; height:75px; opacity:0.8}
+ -->
+  <div id="header-fixed">
+  	<a href="http://www.zapplon.com"><img src= "views/logo.png" width="50" height="50"/></a>
+    <h2 style="position:relative;margin-left:2%;display:inline;color:#cdcdcd ;font-family: 'Roboto', sans-serif;">Welcome to Zapplon </h2>
+    <i class="fa fa-cog"style="color:#cdcdcd;font-size:36px;position: relative;margin-left: 50%;"></i>
+     <?php
+		include("../intercity/conf.php");
+		require_once('../intercity/Http2.php');
+		$r = new HttpRequest("post", "http://".$GLOBALS['ip']."/ZapplonServer/rest/booking/leaderboard", array(
+			"client_id" => $GLOBALS['client_id'],
+        	"app_type" => $GLOBALS['app_type']
+			));
+  		if ($r->getError()) {
+      	echo "sorry, an error occured";
+        //header('Location:intercity.html');
+  		}	 
+  		else {
+      	// parse json and show tweets
+        $js = json_decode($r->getResponse());
+       	$obj=$js->response;
+       
+        foreach ($obj as $value) {
+//var_dump($obj);
+?> 
+    <button data-text-swap="LOGOUT">LOGIN/SIGNUP</button>
+    <script>
+	    $("button").on("click", function() {
+	  var el = $(this);
+	  if (el.text() == el.data("text-swap")) {
+	    el.text(el.data("text-original"));
+	  } else {
+	    el.data("text-original", el.text());
+	    el.text(el.data("text-swap"));
+	  }
+	});
+    </script>
+        
+    <img src="<?php echo $value->url ?>"  class="img-circle"/>
+          
+      
+  </div>  
+  <div data-role="main" class="ui-content">
+    <p><b>Tip:</b> To see the effect, try to resize the window if the scrollbar is not available.</p>
+
+    <p><b>Tip:</b> Tapping the screen will hide and show the header/footer IF the scrollbar is available. The effect varies depending on where you are on the page.</p>
+  
+    <p>Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..Some text to enable scrolling..</p>
+  </div>
+
+
+	</body>
+</html>
